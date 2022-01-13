@@ -9,7 +9,7 @@ const alarm = function () {
 };
 
 const padLeft = function (num) {
-  if (num.toSring().length < 2) return `0${num}`;
+  if (num.toString().length < 2) return `0${num}`;
 
   return num;
 };
@@ -22,7 +22,7 @@ const tick = function () {
   timer.data.time--;
   timer.data.running = true;
 
-  if (time.data.time === 0) {
+  if (timer.data.time === 0) {
     stop();
     alarm();
   }
@@ -39,6 +39,55 @@ const start = function () {
 };
 
 const stop = function () {
-  windows.clearInterval(countdown);
+  window.clearInterval(countdown);
   timer.data.running = false;
 };
+
+var clickHandler = function (event) {
+
+    // Check if a timer action button was clicked
+    var action = event.target.getAttribute('data-action');
+    if (!action) return;
+
+    // If it's the start button, start the timer
+    if (action === 'start') {
+        start();
+        return;
+    }
+
+    // If it's the stop button, stop the timer
+    if (action === 'stop') {
+        stop();
+        return;
+    }
+
+    // If it's the clear button, reset
+    if (action === 'clear') {
+        stop();
+        reset();
+    }
+
+};
+
+var timer = new Reef('#pomodoro-timer', {
+    data: {
+        time: 60,
+        running: false
+    },
+    template: function (props) {
+        return `
+            <div id="timer">
+                ${parseInt(props.time / 60, 10).toString() + ':' + padLeft(props.time % 60)}
+            </div>
+            <p>
+                <button data-action="${props.running ? 'stop' : 'start'}">${props.running ? 'Pause' : 'Start'}</button>
+                <button data-action="clear">Reset</button>
+            </p>`;
+    }
+});
+
+// Render the timer into the DOM
+timer.render();
+
+// Listen for clicks
+document.addEventListener('click', clickHandler, false);
