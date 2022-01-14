@@ -11,7 +11,9 @@ let app = new Reef(el, {
     name: "world"
   },
   template: function (props) {
-    return `<h1>Hello, ${props.name}!</h1>`;
+    return `
+		<hr>
+		<h1>Hello, ${props.name}!</h1>`;
   }
 });
 

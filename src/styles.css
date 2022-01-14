@@ -1,3 +1,36 @@
 body {
   font-family: sans-serif;
 }
+
+.todos {
+	list-style: none;
+	margin-left: 0;
+	padding-left: 0;
+}
+
+.todos .completed {
+	text-decoration: line-through;
+}
+
+.todo:before, 
+.todo:after {
+	display: table;
+	content: " ";
+}
+
+.todo:after {
+	clear: both;
+}
+
+.todo label {
+	width: auto;
+}
+
+.todo label,
+.todo button {
+	float: left;
+}
+
+.todo button {
+	margin-left: 0.5em;
+}

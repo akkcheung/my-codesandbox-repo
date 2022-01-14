@@ -8,7 +8,7 @@
   </head>
 
   <body>
-		Demo 
+		Reef.js Demo 
 
     <div id="app"></div>
 
@@ -18,9 +18,23 @@
 
     <div id="progress-bar"></div>
 
+		<hr>
+
+		<form id="todo-form">
+			<label for="todo-item">What do you need to do?</label>
+			<input type="text" name="todo-item" id="todo-item">
+			<button class="btn" id="add-todo">Add Todo</button>
+		</form>
+
+		<div id="todo-list"></div>
+
+		<div id="articles-from-an-api"></div>
+
     <script src="https://cdn.jsdelivr.net/npm/reefjs@11/dist/reef.min.js"></script>
     <script src="src/index.js"></script>
     <script src="src/pomodoro-timer.js"></script>
     <script src="src/progress-bar.js"></script>
+    <script src="src/todo-list.js"></script>
+    <script src="src/articles-from-an-api.js"></script>
   </body>
 </html>

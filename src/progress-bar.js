@@ -4,7 +4,7 @@ let progressBar = new Reef('#progress-bar', {
 	},
 	template: function (props) {
 		return `
-			<hr>
+			<br><hr>
 			<label for="progress">App progress:</label>
 			<progress id="progress" max="100" value="${props.percentage}"> ${props.percentage}% </progress>`;
 	}

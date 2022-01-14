@@ -43,10 +43,10 @@ const stop = function () {
   timer.data.running = false;
 };
 
-var clickHandler = function (event) {
+const clickHandler = function (event) {
 
     // Check if a timer action button was clicked
-    var action = event.target.getAttribute('data-action');
+    let action = event.target.getAttribute('data-action');
     if (!action) return;
 
     // If it's the start button, start the timer
@@ -69,13 +69,14 @@ var clickHandler = function (event) {
 
 };
 
-var timer = new Reef('#pomodoro-timer', {
+const timer = new Reef('#pomodoro-timer', {
     data: {
         time: 60,
         running: false
     },
     template: function (props) {
         return `
+						<br><hr>
             <div id="timer">
                 ${parseInt(props.time / 60, 10).toString() + ':' + padLeft(props.time % 60)}
             </div>
