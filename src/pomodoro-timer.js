@@ -69,7 +69,8 @@ const clickHandler = function (event) {
 
 };
 
-const timer = new Reef('#pomodoro-timer', {
+// const timer = new Reef('#pomodoro-timer', {
+const timer = new Reef('#content', {
     data: {
         time: 60,
         running: false
@@ -88,7 +89,7 @@ const timer = new Reef('#pomodoro-timer', {
 });
 
 // Render the timer into the DOM
-timer.render();
+// timer.render();
 
 // Listen for clicks
 document.addEventListener('click', clickHandler, false);

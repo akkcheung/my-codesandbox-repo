@@ -1,5 +1,6 @@
 
-let articlesApi = new Reef('#articles-from-an-api', {
+// let articlesApi = new Reef('#articles-from-an-api', {
+let articlesApi = new Reef('#content', {
 	data: {
 		articles: []
 	},
@@ -10,6 +11,7 @@ let articlesApi = new Reef('#articles-from-an-api', {
 		}
 
 		return `
+			<hr>
 			<ul>
 				${ props.articles.map(function (article) {
 						return `<li>

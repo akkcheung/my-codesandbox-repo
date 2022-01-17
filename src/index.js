@@ -1,9 +1,9 @@
 // import "./styles.css";
 
-document.getElementById("app").innerHTML = `
-<h1>Hello Vanilla!</h1>`;
+// document.getElementById("app").innerHTML = `<h1>Hello Vanilla!</h1>`;
 
-let el = document.querySelector("#app");
+//let el = document.querySelector("#app");
+let el = document.querySelector("#content");
 
 let app = new Reef(el, {
   data: {
@@ -17,7 +17,8 @@ let app = new Reef(el, {
   }
 });
 
-let match = new Reef("#match", {
+// let match = new Reef("#match", {
+let match = new Reef(el, {
   data: {
     username: ""
   },
@@ -45,4 +46,4 @@ document.addEventListener("input", function (event) {
 });
 
 app.render();
-match.render();
+// match.render();

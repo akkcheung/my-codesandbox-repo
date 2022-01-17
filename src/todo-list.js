@@ -1,4 +1,18 @@
-let todoField = document.querySelector('#todo-item')
+
+const todoForm = new Reef("#content", {
+		template: function (props) {
+			return `
+				<hr>
+				<form id="todo-form">
+					<label for="todo-item">What do you need to do?</label>
+					<input type="text" name="todo-item" id="todo-item">
+					<button class="btn" id="add-todo">Add Todo</button>
+				</form>
+		`
+		}
+})
+
+// let todoField = document.querySelector('#todo-item')
 
 var todo
 
@@ -65,6 +79,8 @@ const setup = function () {
 const addTodo = function (event) {
 
 	event.preventDefault()
+
+	let todoField = document.querySelector('#todo-item')
 	
 	if (todoField.value.length < 1) return
 

@@ -8,33 +8,100 @@
   </head>
 
   <body>
-		Reef.js Demo 
 
-    <div id="app"></div>
+		<a href="hello-world" data-navigo>Hello World</a>
 
-    <div id="match"></div>
+		<a href="match" data-navigo>Match</a>
 
-    <div id="pomodoro-timer"></div>
+		<a href="progress-bar" data-navigo>Progress Bar</a>
 
-    <div id="progress-bar"></div>
+		<a href="pomodoro-timer" data-navigo>Pomodoro Timer</a>
+			
+		<a href="todo-list" data-navigo>Todo List</a>
+	
+		<a href="articles-api" data-navigo>Rest Api call</a>
 
-		<hr>
+		<div id="content"></div>
 
+    <!-- <div id="app"></div> -->
+
+    <!-- <div id="match"></div> -->
+
+    <!-- <div id="pomodoro-timer"></div> -->
+
+    <!-- <div id="progress-bar"></div> -->
+
+
+		<!--
 		<form id="todo-form">
 			<label for="todo-item">What do you need to do?</label>
 			<input type="text" name="todo-item" id="todo-item">
 			<button class="btn" id="add-todo">Add Todo</button>
 		</form>
+		-->
 
 		<div id="todo-list"></div>
 
+		<hr>
 		<div id="articles-from-an-api"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/reefjs@11/dist/reef.min.js"></script>
+
     <script src="src/index.js"></script>
     <script src="src/pomodoro-timer.js"></script>
     <script src="src/progress-bar.js"></script>
     <script src="src/todo-list.js"></script>
     <script src="src/articles-from-an-api.js"></script>
+
+		<script src="//unpkg.com/navigo"></script>
+		<script>
+
+			const router = new Navigo("/")	
+
+			router.hooks({
+				before(done, match) {
+	
+					let el = document.getElementById('todo-list')
+					el.style.display = "block"
+
+					if (match.url !== "progress-bar") {
+						progressBar.data.percentage = 0
+					}
+
+					if (match.url !== "todo-list") {
+						// console.log("other route than todo-list")
+					  el.style.display = "none"
+					}
+
+				  done()
+				}
+			})
+
+			router.on('/hello-world', function() {
+				// console.log("hello-world")
+				document.getElementById("content").innerHTML = app.html()
+			});
+			
+			router.on('/match', function() {
+				document.getElementById("content").innerHTML = match.html()
+			});
+
+			router.on('/progress-bar', function() {
+				document.getElementById("content").innerHTML = progressBar.html()
+			});
+
+			router.on('/pomodoro-timer', function() {
+				document.getElementById("content").innerHTML = timer.html()
+			});
+	
+			router.on('/todo-list', function() {
+				document.getElementById("content").innerHTML = todoForm.html()
+			});
+
+			router.on('/articles-api', function() {
+				document.getElementById("content").innerHTML = articlesApi.html()
+			});
+
+		</script>
   </body>
 </html>
