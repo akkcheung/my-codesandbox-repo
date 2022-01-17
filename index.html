@@ -46,6 +46,7 @@
 		<div id="articles-from-an-api"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/reefjs@11/dist/reef.min.js"></script>
+		<script src="//unpkg.com/navigo"></script>
 
     <script src="src/index.js"></script>
     <script src="src/pomodoro-timer.js"></script>
@@ -53,55 +54,7 @@
     <script src="src/todo-list.js"></script>
     <script src="src/articles-from-an-api.js"></script>
 
-		<script src="//unpkg.com/navigo"></script>
-		<script>
+    <script src="src/router.js"></script>
 
-			const router = new Navigo("/")	
-
-			router.hooks({
-				before(done, match) {
-	
-					let el = document.getElementById('todo-list')
-					el.style.display = "block"
-
-					if (match.url !== "progress-bar") {
-						progressBar.data.percentage = 0
-					}
-
-					if (match.url !== "todo-list") {
-						// console.log("other route than todo-list")
-					  el.style.display = "none"
-					}
-
-				  done()
-				}
-			})
-
-			router.on('/hello-world', function() {
-				// console.log("hello-world")
-				document.getElementById("content").innerHTML = app.html()
-			});
-			
-			router.on('/match', function() {
-				document.getElementById("content").innerHTML = match.html()
-			});
-
-			router.on('/progress-bar', function() {
-				document.getElementById("content").innerHTML = progressBar.html()
-			});
-
-			router.on('/pomodoro-timer', function() {
-				document.getElementById("content").innerHTML = timer.html()
-			});
-	
-			router.on('/todo-list', function() {
-				document.getElementById("content").innerHTML = todoForm.html()
-			});
-
-			router.on('/articles-api', function() {
-				document.getElementById("content").innerHTML = articlesApi.html()
-			});
-
-		</script>
   </body>
 </html>

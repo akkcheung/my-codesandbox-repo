@@ -45,5 +45,5 @@ document.addEventListener("input", function (event) {
   match.data.username = event.target.value;
 });
 
-app.render();
+// app.render();
 // match.render();

@@ -23,10 +23,12 @@ let articlesApi = new Reef('#content', {
 	}
 })
 
+const fetchRecords = function () {
 fetch('https://jsonplaceholder.typicode.com/posts').then( 
 	function (response) {
 		return response.json()
 	}).then( function (data) {
 		articlesApi.data.articles = data
 	})
-	
+};	
+
